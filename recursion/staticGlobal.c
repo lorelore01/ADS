@@ -17,8 +17,11 @@ int main()
 {
     int a = 5;
     printf("%d", fun(a));
-    printf("\nThe adding is done on returning");
+    printf("\nThe adding is done on returning\n");
+
+
     
+
     return 0;
 }
 

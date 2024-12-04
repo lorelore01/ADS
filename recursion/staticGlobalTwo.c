@@ -69,6 +69,13 @@ int main()
 
     r = fun(5);
     printf("%d\n", r);
+
+    r = fun(5);
+    printf("%d\n", r);
+    
+    r = fun(5);
+    printf("%d\n", r);
+    
     
     return 0;
 }
