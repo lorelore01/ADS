@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-
-
 void tailRecursion(int n)
 {
     if(n > 0)
@@ -28,6 +26,8 @@ void headRecursion(int n)
 
 int main()
 {
+
+    // test variable is created
     int x = 3;
     
     printf("Tail Recursion of x = %d : \n", x);
@@ -35,6 +35,8 @@ int main()
     printf("\n");
     printf("Head Recursion of x = %d : \n", x);
     headRecursion(x);
+
+    // please note stack utilisation in recursion 
 
     return 0;
 }
