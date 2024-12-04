@@ -17,6 +17,7 @@ int main()
 {
     int a = 5;
     printf("%d", fun(a));
+    printf("\nThe adding is done on returning");
     
     return 0;
 }
