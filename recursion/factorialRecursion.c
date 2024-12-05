@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int factorial(int n)
+int recursiveFactorial(int n)
 {
     if (n < 0)
     {
@@ -12,13 +12,23 @@ int factorial(int n)
     }
     else
     {
-        return factorial(n - 1) * n;
+        printf("%d %d\n", n, (n - 1) * n);
+        return recursiveFactorial(n - 1) * n;
     }
+}
+
+int itFactorial(int n)
+{
+    int f = 1;
+    int i;
+    for (i = 1; i <= n; i++)
+        f = f * i;;
+    return f;
 }
 
 int main()
 {
-    int a = factorial(-3);
+    int a = recursiveFactorial(5);
     if (a == - 1)
     {
         printf("Factorial cannot be calculated for negative numbers.\n");
