@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+// #include <stdlib.h>
 using namespace std;
 
 int main()
@@ -13,10 +14,15 @@ int main()
     // dynamic
 
     int A[5];
-    int *p;
+    int *p; // HEAP
     p = new int[5]; // 'C++' 
     // (int *) malloc (5 * sizeof(int)) 'C'-lang
 
+    delete[]p; // deallocation C++
+    // free(p); // deallocation 'C'-lang
+
+    A[0] = 5;
+    p[0] = 5;
 
     return 0;
 }
