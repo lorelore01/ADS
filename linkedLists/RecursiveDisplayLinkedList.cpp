@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 
-struct Node
-{
+struct Node{
     int data;
     struct Node *next;
 }*first;
@@ -27,16 +26,28 @@ void create(int A[], int n)
     }
 }
 
-void Display(struct Node *p)
-{
-    while (p != NULL)
-    {
-        printf("%d ", p->data);
-        p = p->next;
 
+void RDisplay(struct Node *p)
+{
+    if (p != NULL)
+    {
+
+
+        printf("%d ", p->data);
+        RDisplay(p->next);
     }
 }
 
+void RDisplayInv(struct Node *p)
+{
+    if (p != NULL)
+    {
+
+
+        RDisplay(p->next);
+        printf("%d ", p->data);
+    }
+}
 
 int main()
 {
@@ -44,7 +55,9 @@ int main()
 
     create(A, 5);
 
-    Display(first);
+    RDisplay(first);
+    printf("\n");
+    RDisplayInv(first);
 
 
     return 0;
