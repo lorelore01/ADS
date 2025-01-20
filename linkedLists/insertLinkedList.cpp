@@ -162,11 +162,10 @@ void Insert(struct Node *p, int index, int x)
 int main()
 {
 
-    struct Node *temp;
-    int A[] = {3, 5, 7};
 
-    create(A, 3);
     Insert(first, 0, 10);
+    Insert(first, 1, 20);
+    Insert(first, 2, 30);
     Display(first);
     // printf("\nLength is %d\n", count(first));
     // printf("\nSum is %d\n\n", sum(first));
