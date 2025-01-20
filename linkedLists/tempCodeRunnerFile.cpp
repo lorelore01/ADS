@@ -106,10 +106,12 @@ int RMax(struct Node *p)
 struct Node * LSearch(struct Node *p, int key)
 {
     
-    struct Node *q;
+    struct Node *q = NULL;
     
     while (p != NULL)
     {
+        q = p;
+        p = p->next;
         if (key == p->data)
         {
             q->next = p->next;
@@ -117,8 +119,6 @@ struct Node * LSearch(struct Node *p, int key)
             first = p;
             return p;
         }
-        q = p;
-        p = p->next;
        
     }
     return NULL; // key not found
