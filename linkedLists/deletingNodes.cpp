@@ -191,33 +191,52 @@ void SortedInsert(struct Node *p, int x)
     }
 }
 
+
+int Delete(struct Node *p, int index)
+{
+    int i;
+    struct Node *q = NULL;
+    int x = -1;
+
+    if (index < 1 || index > count(p))
+        return -1;
+    if (index == 1)
+    {
+        q = first;
+        x = first->data;
+        first = first->next;
+        free(q);
+        return x;
+    }
+    else
+    {
+        for(i = 0; i < index - 1; i++)
+        {
+            q = p;
+            p = p->next;
+        }
+        q->next = p->next;
+        x = p->data;
+        free(p);
+        return x;
+    }
+    
+
+}
+
+
 int main()
 {
 
-
-    // Insert(first, 0, 10);
-    // Insert(first, 1, 20);
-    // Insert(first, 2, 30);
-    // Display(first);
-    // printf("\nLength is %d\n", count(first));
-    // printf("\nSum is %d\n\n", sum(first));
-    // printf("\nMax is %d\n", RMax(first));
-
-    // temp = LSearch(first, 3);
-    // if(temp)
-    //     printf("\nKey is found %d", temp->data);
-    // else
-    //     printf("\nkey not found");
-
-    int A[]={10, 20, 30, 40, 50};
+    int A[] = {10, 20, 30, 40, 50};
     create(A, 5);
 
 
-    SortedInsert(first, 55);
-    SortedInsert(first, 25);
+    printf("Deleted Element %d\n", Delete(first, 2));
 
     Display(first);
     printf("\n\n");
+
 
 
     return 0;
