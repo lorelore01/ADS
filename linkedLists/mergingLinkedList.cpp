@@ -6,7 +6,7 @@ struct Node
 {
     int data;
     struct Node *next;
-}*first;
+}*first=NULL, *second=NULL, *third=NULL;
 
 void create(int A[], int n)
 {
@@ -16,6 +16,25 @@ void create(int A[], int n)
     first->data = A[0];
     first->next = NULL;
     last = first;
+
+    for (i = 1; i < n; i++)
+    {
+        t = (struct Node *) malloc(sizeof(struct Node));
+        t->data = A[i];
+        t->next = NULL;
+        last->next = t;
+        last = t;
+    }
+}
+
+void create2(int A[], int n)
+{
+    int i;
+    struct Node *t, *last;
+    second = (struct Node *) malloc(sizeof(struct Node));
+    second->data = A[0];
+    second->next = NULL;
+    last = second;
 
     for (i = 1; i < n; i++)
     {
@@ -308,14 +327,71 @@ void Reverse3(struct Node *q, struct Node *p)
         first=q;
 }
 
+void Concat(struct Node *p, struct Node *q)
+{
+    third = p;
+    while(p->next!=NULL)
+        p=p->next;
+    p->next = q;
+    q = NULL;
+    
+}
+
+void Merge(struct Node *p, struct Node *q)
+{
+    struct Node *last;
+    if(p->data < q->data)
+    {
+        third=last=p;
+        p=p->next;
+        third->next=NULL;
+    }
+    else
+    {
+        third = last = q;
+        q = q->next;
+        third->next = NULL;
+    }
+    while(p && q)
+    {
+        if(p->data < q->data)
+        {
+            last->next=p;
+            last=p;
+            p=p->next;
+            last->next = NULL;
+        }
+        else
+        {
+            last->next=q;
+            last=q;
+            q=q->next;
+            last->next = NULL;
+        }
+    }
+    if(p)last->next=p;
+    if(q)last->next=q;
+}
 
 int main()
 {
 
     int A[] = {10, 10, 10, 20, 20, 20, 20, 40, 40, 40, 50};
+    int B[] = {1, 2, 3, 4, 5};
     create(A, 11);
+    create2(B, 5);
+
+    printf("First\n");
+    Display(first);
+    printf("\nSecond\n");
+    Display(second);
 
 
+    Concat(second, first);
+
+    printf("Concatenation of linked list\n");
+
+    Display(third);
 
     return 0;
 }
