@@ -377,19 +377,38 @@ void Merge(struct Node *p, struct Node *q)
     if(q)last->next=q;
 }
 
+int isLoop(struct Node *f)
+{
+    struct Node *p, *q;
+    p = q = f;
+
+    do
+    {
+        p = p->next;
+        q = q->next;
+        q = q ? q->next : q; 
+    } while (p && q && p != q);
+
+    if(p == q)
+        return 1;
+    else   
+        return 0;
+    
+}
+
 int main()
 {
 
-    int A[] = {10, 10, 10, 20, 20, 20, 20, 40, 40, 40, 50};
-    int B[] = {5, 152, 252, 342, 544};
-    create(A, 11);
-    create2(B, 5);
+    struct Node *t1, *t2;
 
-    Merge(first, second);
+    int A[] = {10, 20, 30, 40, 50};
+    create(A, 5);
 
-    Display(third);
-    printf("\n\n");
+    t1 = first->next->next;
+    t2 = first->next->next->next->next;
+    t2->next = t1;
 
+    printf("%d\n", isLoop(first));
 
 
     return 0;
